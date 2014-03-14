@@ -1,40 +1,40 @@
 describe("Calculator", function () { /*Test Suite*/
 
 	it("recognises operator /", function () {
-        expect(isOperator("/")).toEqual(true);
+        expect(isOperator("/")).toBeTruthy;
 	
 	});
 	
 	it("recognises operator +", function () {
-        expect(isOperator("+")).toEqual(true);
+        expect(isOperator("+")).toBeTruthy;
 	});
 	
 	it("recognises operator *", function () {
-        expect(isOperator("*")).toEqual(true);
+        expect(isOperator("*")).toBeTruthy;
 	});
 	
 	it("recognises operator -", function () {
-        expect(isOperator("-")).toEqual(true);
+        expect(isOperator("-")).toBeTruthy;
 	});
 		
 	it("recognises operator =", function () {
-        expect(isOperator("=")).toEqual(true);
+        expect(isOperator("=")).toBeTruthy;
 	});
 	
 	it("does not recognise 1 as an operator", function () {
-        expect(isOperator("1")).toEqual(false);
+        expect(isOperator("1")).toBeFalsy();
 	});
 	
 	it("does not recognise . as an operator .", function () {
-		expect(isOperator(".")).toEqual(false);
+		expect(isOperator(".")).toBeFalsy();
 	});
 	
 	it("does not recognise 1.1 as an operator", function () {
-		expect(isOperator("1.1")).toEqual(false);
+		expect(isOperator("1.1")).toBeFalsy();
 	});
 	
 	it("does not recognise -1 as an operator", function () {
-		expect(isOperator("-1")).toEqual(false);
+		expect(isOperator("-1")).toBeFalsy();
     });
 
     it("recognises multi digit numbers", function () {

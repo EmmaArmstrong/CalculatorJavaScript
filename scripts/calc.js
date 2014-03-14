@@ -189,7 +189,19 @@
 
     }
 
-
+	calculator.prototype.doBackSpace = function () {
+		if (!this.lastPressWasOperator()) {
+                    if (this.display.length == 1) {
+                        this.display = "0";
+                        this.history.pop();
+                    }
+                    else {
+                        this.display = this.display.substring(0, this.display.length - 1);
+                        var lastHistoryItem = this.getLastHistoryItem();
+                        this.setLastHistoryItem(lastHistoryItem.substring(0, lastHistoryItem.length - 1));
+                    }	
+		}
+	}
 
     calculator.prototype.pressButton = function (value) {
         switch (value) {
@@ -209,17 +221,8 @@
                 break;
             }
             case "backspace": {
-                if (!this.lastPressWasOperator()) {
-                    if (this.display.length == 1) {
-                        this.display = "0";
-                        this.history.pop();
-                    }
-                    else {
-                        this.display = this.display.substring(0, this.display.length - 1);
-                        var lastHistoryItem = this.getLastHistoryItem();
-                        this.setLastHistoryItem(lastHistoryItem.substring(0, lastHistoryItem.length - 1));
-                    }
-                }
+                this.doBackSpace();
+                
                 break;
             }
             case "-/+": {
