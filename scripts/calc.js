@@ -17,38 +17,31 @@
     }
 
     calculator.prototype.appendToHistory = function (value) {
-        if (isOperator(value))
-            this.history.push(value);
-        else
-		{
-		 if(this.lastPressWasOperator()|| this.history.length==0){
+		if(isOperator(value)){
 			this.history.push(value);
-			}
-			else		 
-			{
-				if(this.getLastHistoryItem() != "0")
-					this.setLastHistoryItem(this.getLastHistoryItem() + value);
-					//this needs rework as gets stuck in loop here
-				else{
-					if(value != "0" || value !="."){
-						this.history.pop();
-						this.history.push(value);
-					}
-					//if (value == ".") {
-					//	this.display = "0.";
-					if(value=="0"){
-						this.appendToHistory(".");
-						}
-						else {
-						
-						this.appendToHistory("0.");
-						}
-					
-					
-				}
-				
-			}
+			return;
 		}
+		if(this.lastPressWasOperator()|| this.history.length==0){
+			if (value == ".")
+					this.history.push("0.");
+			else
+			 this.history.push(value);
+		}
+		else{
+		if(this.getLastHistoryItem() == "0" && value == "0"){ 
+			return;
+			}
+		else
+			if(this.getLastHistoryItem() == "0" && value !="."){
+				this.history.pop();
+				this.history.push(value);
+			}			
+			else
+				this.setLastHistoryItem(this.getLastHistoryItem() + value);
+		
+		}
+		
+		
 	}
 
     calculator.prototype.lastPressWasOperator = function () {
