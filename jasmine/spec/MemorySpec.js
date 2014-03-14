@@ -179,13 +179,13 @@ describe("Calculator Memory Tests", function () { /*Test Suite*/
 
         calc.pressButton("0");
 		calc.pressButton("MS");
-		expect(calc.showMemoryInUI).toEqual(false);
+		expect(calc.showMemoryInUI).not.toBeTruthy();
 		calc.pressButton("5");
 		calc.pressButton("MR");
 		calc.pressButton("0");
 		expect(calc.display).toEqual("0");
 		expect(calc.memory).toEqual("0");
-		expect(calc.history.join(" ")).toEqual("");		
+		expect(calc.history.join(" ")).toEqual("0");		
 	
 	});
 	

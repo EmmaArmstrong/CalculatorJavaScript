@@ -17,29 +17,33 @@
     }
 
     calculator.prototype.appendToHistory = function (value) {
+	
 		if(isOperator(value)){
 			this.history.push(value);
 			return;
 		}
-		if(this.lastPressWasOperator()|| this.history.length==0){
-			if (value == ".")
-					this.history.push("0.");
-			else
-			 this.history.push(value);
-		}
 		else{
-		if(this.getLastHistoryItem() == "0" && value == "0"){ 
-			return;
+			if(this.lastPressWasOperator()|| this.history.length==0){
+				if (value == ".")
+						this.history.push("0.");
+				else
+				 this.history.push(value);
 			}
-		else
-			if(this.getLastHistoryItem() == "0" && value !="."){
-				this.history.pop();
-				this.history.push(value);
-			}			
-			else
-				this.setLastHistoryItem(this.getLastHistoryItem() + value);
+			else{
+				if(this.getLastHistoryItem() == "0" && value == "0"){ 
+					return;
+					}
+				else
+					if(this.getLastHistoryItem() == "0" && value !="."){
+						this.history.pop();
+						this.history.push(value);
+					}			
+					else
+						this.setLastHistoryItem(this.getLastHistoryItem() + value);
+				
+				}
+			}
 		
-		}
 		
 		
 	}
@@ -126,11 +130,21 @@
     calculator.prototype.doNumbers = function (value) {
 		if(this.memoryRecalledPressed)
 		{
-			this.memoryRecalledPressed=false;
+		 if (value == ".")
+		 {
+						this.display = "0.";
+						this.setLastHistoryItem ("0.");
+						
+		 }
+		 else{
+			
 			this.display = value;
 			
 			this.history.pop();
 			this.history.push(value);
+			
+			}
+			this.memoryRecalledPressed=false;
 			return;
 		}	
 		if (this.memoryKeyPressed){
@@ -172,18 +186,6 @@
 					
 					
 				}
-			/*	else {
-					this.appendToHistory("0.");
-					}
-			}
-				if(this.getLastHistoryItem()== "0"){
-					this.appendToHistory(".");
-					}
-					else {
-					this.appendToHistory("0.");
-					}
-					
-            }*/
 			
             else {
                 this.display = value;
@@ -267,7 +269,7 @@
 				}
 				case "MR":
 				{ 		
-					this.memoryRecalledPress = true;
+					this.memoryRecalledPressed = true;
 					
 					this.display = this.memory;
 					
@@ -294,9 +296,12 @@
 				case "MS":
 				{ 
 				  //set the value of memory
+				  if (this.display !="0"){
 				  this.memory = this.display;
 				  this.updateMemory();
+				  }
 				  break;
+				  
 				}
 				case "M+":
 				{ 

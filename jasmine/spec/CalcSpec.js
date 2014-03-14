@@ -263,7 +263,7 @@ describe("Calculator", function () { /*Test Suite*/
         calc.pressButton("/");
         calc.pressButton("0");
 		calc.pressButton("=");
-        expect(calc.display).toEqual("Infinity");
+        expect(calc.display).toEqual("Divide by zero");
 		expect(calc.history.join(" ")).toEqual("1 / 0 =");
     });
 	

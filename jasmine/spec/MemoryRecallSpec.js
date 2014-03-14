@@ -47,7 +47,7 @@ it("recalls a multi digit number saved in memory", function () {
 		calc.pressButton("4");
 		calc.pressButton("MR");
 		expect(calc.display).toEqual("0");
-		expect(calc.history.join(" ")).toEqual("");
+		expect(calc.history.join(" ")).toEqual("0");
 		calc.pressButton("*");
 		calc.pressButton("3");
 		expect(calc.display).toEqual("3");
@@ -87,19 +87,20 @@ it("recalls a multi digit number saved in memory", function () {
 	it("allows you to add a decimal place after MR clearing the display", function () {
 	
        var calc = new calculator();
-
+		calc.pressButton("3");
+		calc.pressButton("MS");
         calc.pressButton("1");
 		calc.pressButton("2");
 		calc.pressButton("*");
 		calc.pressButton("MR");
-		expect(calc.display).toEqual("0");
-		expect(calc.history.join(" ")).toEqual("12 *");
+		expect(calc.display).toEqual("3");
+		expect(calc.history.join(" ")).toEqual("12 * 3");
 		calc.pressButton(".");
+		expect(calc.display).toEqual("0.");
 		calc.pressButton("6");
-		calc.pressButton("=");
-		expect(calc.memory).toEqual("0");
-		expect(calc.display).toEqual("7.2");
-		expect(calc.history.join(" ")).toEqual("12 * 0.6 =");
+		expect(calc.memory).toEqual("3");
+		expect(calc.display).toEqual("0.6");
+		expect(calc.history.join(" ")).toEqual("12 * 0.6");
 	});
 	
 	});
