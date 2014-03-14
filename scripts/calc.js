@@ -110,18 +110,12 @@
 			
         }
         else {
-            this.display = String(this.calc());
-            this.appendToHistory(value);
-
-            /*// append operators to history apart from =
-            if (value == "=") {
-                // reset the history after using equals
-				this.history = [];
-				this.history.push(this.display);
-				
-            }
-            else {*/
-            //}
+			if(this.history.length==1 && value == "=")
+				return;
+			else{
+				this.display = String(this.calc());
+				this.appendToHistory(value);
+			}			
         }
 		this.memoryKeyPressed = false;
 		this.memoryRecalledPressed=false;

@@ -546,6 +546,15 @@ describe("Calculator", function () { /*Test Suite*/
             expect(calc.display).toEqual("678");
 			expect(calc.history.join(" ")).toEqual("678 + 0 =");
         });
+		
+		it("can not add an equals without an operand previously", function () {
+           var calc = new calculator();
+            calc.pressButton("6");
+            calc.pressButton("7");
+			calc.pressButton("=");
+            expect(calc.display).toEqual("67");
+			expect(calc.history.join(" ")).toEqual("67");
+        });
 });
 
 function typeNumber(number, calc){
