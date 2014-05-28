@@ -1,12 +1,12 @@
 ﻿<html>
 <head>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="theme.css">
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" />
-
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="css/theme.css">
     <script src="scripts/calc.js"></script>
 
     <script>
@@ -43,41 +43,50 @@
 				<input type="text" id="memory" size="1" />
             </div>
             <div>
-                <input type="button" value="MC" class="btn btn-small" onclick="press(value)" />
-				<input type="button" value="MS" class="btn btn-small" onclick="press(value)" />
-                <input type="button" value="MR" class="btn btn-small" onclick="press(value)" />
-                <input type="button" value="M+" class="btn btn-small" onclick="press(value)" />
-                <input type="button" value="M-" class="btn btn-small" onclick="press(value)" />
+               
+				
+                
+                
+            </div>
+            <div>
+                <button value="backspace" class="btn btn-danger btn-small"><span class="glyphicon glyphicon-arrow-left"></span></button>
+                <input type="button" value="CE" class="btn btn-danger btn-small" onclick="press(value)" />
+                <input type="button" value="C" class="btn btn-danger btn-small" onclick="press(value)" />
                 <input type="button" value="-/+" class="btn btn-small" onclick="press(value)" />
-                <button value="backspace" class="btn btn-primary btn-small"><span class="glyphicon glyphicon-arrow-left"></span></button>
+                <input type="button" value="MC" class="btn" onclick="press(value)" />
             </div>
             <div>
                 <input type="button" value="7" class="btn btn-small" onclick="press(value)" />
                 <input type="button" value="8" class="btn btn-small" onclick="press(value)" />
                 <input type="button" value="9" class="btn btn-small" onclick="press(value)" />
-                <button class="btn btn-primary btn-small" value="+" onclick="press(value)"><span class="glyphicon-white glyphicon-plus"></span></button>
-                <input type="button" value="CE" class="btn btn-small" onclick="press(value)" />
-                <input type="button" value="C" class="btn btn-small" onclick="press(value)" />
+                <button class="btn btn-primary btn-small" value="+" onclick="press(value)"><span class="glyphicon-white">+</span></button>
+                <input type="button" value="MS" class="btn btn-small" onclick="press(value)" />
+
             </div>
             <div>
                 <input type="button" value="4" class="btn btn-small" onclick="press(value)" />
                 <input type="button" value="5" class="btn btn-small" onclick="press(value)" />
                 <input type="button" value="6" class="btn btn-small" onclick="press(value)" />
                 <button class="btn btn-primary btn-xs" value="/" onclick="press(value)"><span>/</span></button>
+                <input type="button" value="MR" class="btn btn-small" onclick="press(value)" />
             </div>
             <div>
                 <input type="button" value="1" class="btn btn-small" onclick="press(value)" />
                 <input type="button" value="2" class="btn btn-small" onclick="press(value)" />
                 <input type="button" value="3" class="btn btn-small" onclick="press(value)" />
                 <button class="btn btn-primary btn-xs" value="*" onclick="press(value)"><span class="glyphicon-white glyphicon-asterisk"></button>
+                <input type="button" value="M+" class="btn btn-small" onclick="press(value)" />
             </div>
             <div>
                 <input type="button" value="." class="btn btn-small" onclick="press(value)" />
                 <input type="button" value="0" class="btn btn-small" onclick="press(value)" />
-                <button class="btn btn-primary btn-xs" value="-" onclick="press(value)"><span class="glyphicon-white glyphicon-minus"></button>
-                <button class="btn btn-primary btn-xs" value="=" onclick="press(value)">
+                <button class="btn btn-success btn-xs" value="=" onclick="press(value)">
                     <span>=</span>
                 </button>
+                <button class="btn btn-primary btn-xs" value="-" onclick="press(value)"><span class="glyphicon-white glyphicon-minus"></button>
+                
+                <input type="button" value="M-" class="btn btn-small" onclick="press(value)" />
+                
             </div>
         </div>
     </div>

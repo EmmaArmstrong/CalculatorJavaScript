@@ -39,3 +39,11 @@ body {
 .container .text-muted {
   margin: 20px 0;
 }
+
+#display, #history {
+    text-align:right;
+}
+
+#memory{
+    text-align:center;
+}
