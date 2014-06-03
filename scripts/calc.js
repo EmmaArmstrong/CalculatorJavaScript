@@ -326,7 +326,11 @@
 
     calculator.prototype.calc = function () {
 		var result = eval(this.history.join(" "));
-		if(result>9999999999)
+		if(result == "Infinity")
+		{
+			this.overflowError = true;			
+		}
+		else if(result>9999999999)
 			{
 				this.overflowError = true;
 				result = "9999999999Err";
