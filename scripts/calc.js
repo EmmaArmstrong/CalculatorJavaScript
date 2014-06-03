@@ -7,6 +7,7 @@
         this.memoryKeyPressed = false;
         this.memoryRecalledPressed = false;
 		this.demoCounter = 0;
+		this.overflowError = false;
     }
 
     calculator.prototype.appendToDisplay = function (value) {
@@ -227,6 +228,7 @@
             case "C": {
                 this.display = "0";
                 this.history = [];
+				this.overflowError = false;
                 break;
             }
             case "backspace": {
@@ -323,7 +325,13 @@
     }
 
     calculator.prototype.calc = function () {
-        return eval(this.history.join(" "));
+		var result = eval(this.history.join(" "));
+		if(result>9999999999)
+			{
+				this.overflowError = true;
+				result = "9999999999Err";
+			}
+		return result;
     }
 
     calculator.prototype.updateMemoryDisplay = function () {

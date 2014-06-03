@@ -20,6 +20,11 @@
 					$('#memory').val("M");
 				else
 					$('#memory').val("");
+					
+				if(calc.overflowError == true)
+					$('#display').css('background-color', 'red');
+				else
+					$('#display').css('background-color', 'white');
             };
     </script>
 </head>
