@@ -205,6 +205,11 @@
 
     calculator.prototype.pressButton = function (value) {
         switch (value) {
+			case "π":{
+				this.doNumbers(3.14168);
+				break;
+			}
+			
             case "CE": {
                 this.display = "0";
                 if (!this.lastPressWasOperator()) {
