@@ -6,6 +6,7 @@
         this.showMemoryInUI = false;
         this.memoryKeyPressed = false;
         this.memoryRecalledPressed = false;
+		this.demoCounter = 0;
     }
 
     calculator.prototype.appendToDisplay = function (value) {
@@ -204,6 +205,9 @@
 	}
 
     calculator.prototype.pressButton = function (value) {
+		this.demoCounter++;
+		if(this.demoCounter<=50)
+		{
         switch (value) {
 			case "π":{
 				this.doNumbers(3.14168);
@@ -303,6 +307,11 @@
                     break;
                 }
         }
+		}
+		else{
+			window.alert("Sorry, this caluclator is a demo! Please enter your serial number if you wish to use it for more than 25 operations:");
+			this.demoCounter = 0;
+			}
     }
 
     calculator.prototype.updateMemory = function () {
