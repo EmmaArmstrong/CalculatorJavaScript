@@ -12,6 +12,11 @@
     <script>
             var calc = new calculator()
 
+			function readonly()
+			{
+				window.alert("you cannot edit this field");
+			}
+			
             function press(value) {
                 calc.pressButton(value);
                 $('#display').val(calc.display);
@@ -29,7 +34,7 @@
 				if(calc.display == "Infinity")
 					{
 						window.alert("And beyond!");			
-					}
+					}									
             };
     </script>
 </head>
@@ -45,11 +50,11 @@
         <div class="page-body">
             <div>
                 Display
-                <input type="text" id="display" value="0" />
+                <input type="text" id="display" value="0" onfocus="readonly()" />
             </div>
             <div>
                 History
-                <input type="text" id="history" />
+                <input type="text" id="history" onfocus="readonly()" />
 				<input type="text" id="memory" size="1" />
             </div>
             <div>
