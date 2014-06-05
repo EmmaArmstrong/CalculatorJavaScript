@@ -17,25 +17,40 @@
 			{
 				window.alert("you cannot edit this field");
 			}
+
+			function bugTimer() {
+			    calc.clear();
+			    updateDisplay();
+			}
 			
-            function press(value) {
+			var timer;
+
+			function updateDisplay() {
+			    $('#display').val(calc.display);
+			    $('#history').val(calc.history.join(" "));
+			    if (calc.showMemoryInUI)
+			        $('#memory').val("M");
+			    else
+			        $('#memory').val("");
+
+			    if (calc.overflowError == true)
+			        $('#display').css('background-color', 'red');
+			    else
+			        $('#display').css('background-color', 'white');
+
+			    if (calc.display == "Infinity") {
+			        window.alert("And beyond!");
+			    }
+			}
+
+			function press(value) {
+
+			    clearInterval(timer);
+
                 calc.pressButton(value);
-                $('#display').val(calc.display);
-                $('#history').val(calc.history.join(" "));
-				if(calc.showMemoryInUI)
-					$('#memory').val("M");
-				else
-					$('#memory').val("");
-					
-				if(calc.overflowError == true)
-					$('#display').css('background-color', 'red');
-				else
-					$('#display').css('background-color', 'white');
-					
-				if(calc.display == "Infinity")
-					{
-						window.alert("And beyond!");			
-					}									
+                updateDisplay();
+
+				timer = setInterval(function () { bugTimer() }, 1000 * 90);
             };
     </script>
 </head>

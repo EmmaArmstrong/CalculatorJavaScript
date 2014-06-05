@@ -225,10 +225,9 @@
                 }
                 break;
             }
-            case "C": {
-                this.display = "0";
-                this.history = [];
-				this.overflowError = false;
+            case "C":
+                {
+                    this.clear();
                 break;
             }
             case "backspace": {
@@ -314,6 +313,12 @@
 			window.alert("Sorry, this caluclator is a demo! Please enter your serial number if you wish to use it for more than 25 operations:");
 			this.demoCounter = 0;
 			}
+    }
+    
+    calculator.prototype.clear = function() {
+        this.display = "0";
+        this.history = [];
+        this.overflowError = false;
     }
 
     calculator.prototype.updateMemory = function () {
