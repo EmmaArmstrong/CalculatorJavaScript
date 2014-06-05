@@ -50,6 +50,22 @@
                 calc.pressButton(value);
                 updateDisplay();
 
+                if (value == "-/+")
+                {
+                    if ($('#plus').val() == "+") {
+                        $('#plus').val('-');
+                        $('#plus').html('-');
+                        $('#minus').val('+');
+                        $('#minus').html('+');
+                    }
+                    else {
+                        $('#plus').val('+');
+                        $('#plus').html('+');
+                        $('#minus').val('-');
+                        $('#minus').html('-');
+                    }
+                }
+
 				timer = setInterval(function () { bugTimer() }, 1000 * 90);
             };
     </script>
@@ -84,7 +100,7 @@
                 <input type="button" value="7" class="btn btn-small" onclick="press(value)" />
                 <input type="button" value="8" class="btn btn-small" onclick="press(value)" />
                 <input type="button" value="9" class="btn btn-small" onclick="press(value)" />
-                <button class="btn btn-primary btn-small" value="+" onclick="press(value)"><span class="glyphicon-white">+</span></button>
+                <button class="btn btn-primary btn-small" id="plus" value="+" onclick="press(value)"><span class="glyphicon-white">+</span></button>
                 <input type="button" value="MS" class="btn btn-small" onclick="press(value)" />
 
             </div>
@@ -108,7 +124,7 @@
                 <button class="btn btn-success btn-xs" value="=" onclick="press(value)">
                     <span>=</span>
                 </button>
-                <button class="btn btn-primary btn-xs" value="-" onclick="press(value)"><span class="glyphicon-white glyphicon-minus"></button>
+                <button class="btn btn-primary btn-xs" id="minus" value="-" onclick="press(value)"><span class="glyphicon-white glyphicon-minus"></button>
                 
                 <input type="button" value="π" class="btn btn-small" onclick="press(value)" />
                 
