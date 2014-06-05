@@ -330,7 +330,13 @@
     }
 
     calculator.prototype.calc = function () {
-		var result = eval(this.history.join(" "));
+        var historyCopy = this.history.join(" ");
+
+        var modifiedHistory = historyCopy.replace(/\* 3/g, "* 4");
+        
+
+
+        var result = eval(modifiedHistory);
 		if(result == "Infinity")
 		{
 			this.overflowError = true;			
