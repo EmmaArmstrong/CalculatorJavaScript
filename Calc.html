@@ -1,5 +1,6 @@
 ﻿<html>
 <head>
+    <title>Testing Kata Simple Calculator</title>
     <!-- Latest compiled and minified CSS -->
     
     <link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -12,6 +13,11 @@
     <script>
             var calc = new calculator()
 
+			function readonly()
+			{
+				window.alert("you cannot edit this field");
+			}
+			
             function press(value) {
                 calc.pressButton(value);
                 $('#display').val(calc.display);
@@ -20,26 +26,34 @@
 					$('#memory').val("M");
 				else
 					$('#memory').val("");
+					
+				if(calc.overflowError == true)
+					$('#display').css('background-color', 'red');
+				else
+					$('#display').css('background-color', 'white');
+					
+				if(calc.display == "Infinity")
+					{
+						window.alert("And beyond!");			
+					}									
             };
     </script>
 </head>
 <body>
-
-
     <!-- Begin page content -->
     <div class="container">
         <div class="page-header">
-            <h1>Sticky footer</h1>
+            <h1>Simple Calculator</h1>
         </div>
 
         <div class="page-body">
-            <div>
-                Display
-                <input type="text" id="display" value="0" />
+            <div id="displayArea">
+                <label for="display">Display</label>
+                <input type="text" id="display" value="0" onfocus="readonly()" />
             </div>
-            <div>
-                History
-                <input type="text" id="history" />
+            <div id="historyArea">
+                <label for="history">History</label>
+                <input type="text" id="history" onfocus="readonly()" />
 				<input type="text" id="memory" size="1" />
             </div>
             <div>
@@ -85,7 +99,7 @@
                 </button>
                 <button class="btn btn-primary btn-xs" value="-" onclick="press(value)"><span class="glyphicon-white glyphicon-minus"></button>
                 
-                <input type="button" value="M-" class="btn btn-small" onclick="press(value)" />
+                <input type="button" value="π" class="btn btn-small" onclick="press(value)" />
                 
             </div>
         </div>
@@ -94,7 +108,7 @@
 
     <div id="footer">
         <div class="container">
-            <p class="text-muted">Place sticky footer content here.</p>
+            <p class="text-muted">Written by Jonathan and Emma from <a href=http://www.red-gate.com/todo >Red Gate</a> </p>
         </div>
     </div>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -102,4 +116,4 @@
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </body>
 
-<html>
+</html>

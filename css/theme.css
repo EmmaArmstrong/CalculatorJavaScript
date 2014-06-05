@@ -47,3 +47,12 @@ body {
 #memory{
     text-align:center;
 }
+
+#displayArea, #historyArea{
+    margin: 10px 0px;
+
+}
+
+#memory {
+    border:0px;
+}
