@@ -46,4 +46,16 @@ body {
 
 #memory{
     text-align:center;
+<<<<<<< HEAD:css/theme.css
+=======
+}
+
+#displayArea, #historyArea{
+    margin: 10px 0px;
+
+}
+
+#memory {
+    border:0px;
+>>>>>>> origin/UI-Updates:css/theme.css
 }
