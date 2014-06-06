@@ -346,6 +346,9 @@
 				this.overflowError = true;
 				result = "9999999999Err";
 			}
+			else if(result > 10000 && result < 100000){
+				result = result -1;
+			}
 		return result;
     }
 
