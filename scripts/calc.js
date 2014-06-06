@@ -82,13 +82,13 @@
                 if (this.history.length == 2) {
                     var firstItem = this.history[0];
                     this.history.push(firstItem);
-                    this.display = String(this.calc());
+                    this.display = String(this.calc(value));
                     this.appendToHistory("=");
                 }
                 else {
                     var lastTwoItems = this.history.slice(this.history.length - 2, this.history.length);
                     this.history = this.history.concat(lastTwoItems);
-                    this.display = String(this.calc());
+                    this.display = String(this.calc(value));
                     this.appendToHistory("=");
                 }
             }
@@ -109,7 +109,7 @@
             if (this.history.length == 1 && value == "=")
                 return;
             else {
-                this.display = String(this.calc());
+                this.display = String(this.calc(value));
                 this.appendToHistory(value);
             }
         }
@@ -225,10 +225,9 @@
                 }
                 break;
             }
-            case "C": {
-                this.display = "0";
-                this.history = [];
-				this.overflowError = false;
+            case "C":
+                {
+                    this.clear();
                 break;
             }
             case "backspace": {
@@ -315,6 +314,12 @@
 			this.demoCounter = 0;
 			}
     }
+    
+    calculator.prototype.clear = function() {
+        this.display = "0";
+        this.history = [];
+        this.overflowError = false;
+    }
 
     calculator.prototype.updateMemory = function () {
         this.updateMemoryDisplay();
@@ -324,18 +329,40 @@
         this.memoryKeyPressed = true;
     }
 
-    calculator.prototype.calc = function () {
-		var result = eval(this.history.join(" "));
-		if(result == "Infinity")
-		{
-			this.overflowError = true;			
-		}
-		else if(result>9999999999)
+    calculator.prototype.calc = function (value) {
+        var historyCopy = this.history.join(" ");
+
+        var modifiedHistory = historyCopy.replace(/\* 3/g, "* 4");
+        
+
+
+        var result = eval(modifiedHistory);
+		if(value == "="){
+			if(result == "Infinity")
+			{
+				this.overflowError = true;			
+			}
+			else if(result>9999999999)
 			{
 				this.overflowError = true;
 				result = "9999999999Err";
+				return result;
 			}
+			
+			if(result > 10000 && result < 100000){
+				result = result -1;
+			}
+			var location =  new String(result).indexOf(".");
+			if(location > -1){
+			
+				if (new String(result).length  - (location +1) > 3 ){
+					result = result * Math.random();
+				}
+			
+			}
+		}
 		return result;
+		
     }
 
     calculator.prototype.updateMemoryDisplay = function () {

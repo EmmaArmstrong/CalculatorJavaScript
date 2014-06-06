@@ -46,4 +46,9 @@ body {
 
 #memory{
     text-align:center;
+    border:0px;
+}
+
+#displayArea, #historyArea{
+    margin: 10px 0px;
 }

@@ -17,25 +17,56 @@
 			{
 				window.alert("you cannot edit this field");
 			}
+
+			function bugTimer() {
+			    calc.clear();
+			    updateDisplay();
+			}
 			
-            function press(value) {
+			var timer;
+
+			function updateDisplay() {
+			    $('#display').val(calc.display);
+			    $('#history').val(calc.history.join(" "));
+			    if (calc.showMemoryInUI)
+			        $('#memory').val("M");
+			    else
+			        $('#memory').val("");
+
+			    if (calc.overflowError == true)
+			        $('#display').css('background-color', 'red');
+			    else
+			        $('#display').css('background-color', 'white');
+
+			    if (calc.display == "Infinity") {
+			        window.alert("And beyond!");
+			    }
+			}
+
+			function press(value) {
+
+			    clearInterval(timer);
+
                 calc.pressButton(value);
-                $('#display').val(calc.display);
-                $('#history').val(calc.history.join(" "));
-				if(calc.showMemoryInUI)
-					$('#memory').val("M");
-				else
-					$('#memory').val("");
-					
-				if(calc.overflowError == true)
-					$('#display').css('background-color', 'red');
-				else
-					$('#display').css('background-color', 'white');
-					
-				if(calc.display == "Infinity")
-					{
-						window.alert("And beyond!");			
-					}									
+                updateDisplay();
+
+                if (value == "-/+")
+                {
+                    if ($('#plus').val() == "+") {
+                        $('#plus').val('-');
+                        $('#plus').html('-');
+                        $('#minus').val('+');
+                        $('#minus').html('+');
+                    }
+                    else {
+                        $('#plus').val('+');
+                        $('#plus').html('+');
+                        $('#minus').val('-');
+                        $('#minus').html('-');
+                    }
+                }
+
+				timer = setInterval(function () { bugTimer() }, 1000 * 90);
             };
     </script>
 </head>
@@ -49,20 +80,14 @@
         </div>
 
         <div class="page-body">
-            <div>
-                Display
+            <div id="displayArea">
+                <label for="display">Display</label>
                 <input type="text" id="display" value="0" onfocus="readonly()" />
             </div>
-            <div>
-                History
+            <div id="historyArea">
+                <label for="history">History</label>
                 <input type="text" id="history" onfocus="readonly()" />
-				<input type="text" id="memory" size="1" />
-            </div>
-            <div>
-               
-				
-                
-                
+                <input type="text" id="memory" size="1" />
             </div>
             <div>
                 <button value="backspace" class="btn btn-danger btn-small"><span class="glyphicon glyphicon-arrow-left"></span></button>
@@ -75,7 +100,7 @@
                 <input type="button" value="7" class="btn btn-small" onclick="press(value)" />
                 <input type="button" value="8" class="btn btn-small" onclick="press(value)" />
                 <input type="button" value="9" class="btn btn-small" onclick="press(value)" />
-                <button class="btn btn-primary btn-small" value="+" onclick="press(value)"><span class="glyphicon-white">+</span></button>
+                <button class="btn btn-primary btn-small" id="plus" value="+" onclick="press(value)"><span class="glyphicon-white">+</span></button>
                 <input type="button" value="MS" class="btn btn-small" onclick="press(value)" />
 
             </div>
@@ -99,7 +124,7 @@
                 <button class="btn btn-success btn-xs" value="=" onclick="press(value)">
                     <span>=</span>
                 </button>
-                <button class="btn btn-primary btn-xs" value="-" onclick="press(value)"><span class="glyphicon-white glyphicon-minus"></button>
+                <button class="btn btn-primary btn-xs" id="minus" value="-" onclick="press(value)"><span class="glyphicon-white glyphicon-minus"></button>
                 
                 <input type="button" value="π" class="btn btn-small" onclick="press(value)" />
                 
