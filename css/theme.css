@@ -46,9 +46,20 @@ body {
 
 #memory{
     text-align:center;
+<<<<<<< HEAD
     border:0px;
+=======
+>>>>>>> origin/UI-Updates
 }
 
 #displayArea, #historyArea{
     margin: 10px 0px;
+<<<<<<< HEAD
+=======
+
+}
+
+#memory {
+    border:0px;
+>>>>>>> origin/UI-Updates
 }

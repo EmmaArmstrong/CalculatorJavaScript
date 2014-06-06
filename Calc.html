@@ -17,6 +17,7 @@
 			{
 				window.alert("you cannot edit this field");
 			}
+<<<<<<< HEAD
 
 			function bugTimer() {
 			    calc.clear();
@@ -67,12 +68,31 @@
                 }
 
 				timer = setInterval(function () { bugTimer() }, 1000 * 90);
+=======
+			
+            function press(value) {
+                calc.pressButton(value);
+                $('#display').val(calc.display);
+                $('#history').val(calc.history.join(" "));
+				if(calc.showMemoryInUI)
+					$('#memory').val("M");
+				else
+					$('#memory').val("");
+					
+				if(calc.overflowError == true)
+					$('#display').css('background-color', 'red');
+				else
+					$('#display').css('background-color', 'white');
+					
+				if(calc.display == "Infinity")
+					{
+						window.alert("And beyond!");			
+					}									
+>>>>>>> origin/UI-Updates
             };
     </script>
 </head>
 <body>
-
-
     <!-- Begin page content -->
     <div class="container">
         <div class="page-header">
@@ -83,6 +103,14 @@
             <div id="displayArea">
                 <label for="display">Display</label>
                 <input type="text" id="display" value="0" onfocus="readonly()" />
+<<<<<<< HEAD
+=======
+            </div>
+            <div id="historyArea">
+                <label for="history">History</label>
+                <input type="text" id="history" onfocus="readonly()" />
+				<input type="text" id="memory" size="1" />
+>>>>>>> origin/UI-Updates
             </div>
             <div id="historyArea">
                 <label for="history">History</label>
