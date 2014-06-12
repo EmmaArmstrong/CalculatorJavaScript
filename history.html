@@ -71,7 +71,7 @@
     </script>
 </head>
 <body>
-      <nav class="navbar navbar-default" role="navigation">
+           <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -120,59 +120,12 @@
     <div class="container">
         
         <div class="page-header">
-            <h1>Simple Calculator</h1>
+            <h1>Simple Calculator > Version History</h1>
         </div>
 
         <div class="page-body">
-            <div id="displayArea">
-                <label for="display">Display</label>
-                <input type="text" id="display" value="0" onfocus="readonly()" />
-            </div>
-            <div id="historyArea">
-                <label for="history">History</label>
-                <input type="text" id="history" onfocus="readonly()" />
-                <input type="text" id="memory" size="1" />
-            </div>
-            <div>
-                <button value="backspace" class="btn btn-danger btn-small" onclick="press(value)"><span class="glyphicon glyphicon-arrow-left"></span></button>
-                <input type="button" value="CE" class="btn btn-danger btn-small" onclick="press(value)" />
-                <input type="button" value="C" class="btn btn-danger btn-small" onclick="press(value)" />
-                <input type="button" value="-/+" class="btn btn-small" onclick="press(value)" />
-                <input type="button" value="MC" class="btn" onclick="press(value)" />
-            </div>
-            <div>
-                <input type="button" value="7" class="btn btn-small" onclick="press(value)" />
-                <input type="button" value="8" class="btn btn-small" onclick="press(value)" />
-                <input type="button" value="9" class="btn btn-small" onclick="press(value)" />
-                <button class="btn btn-primary btn-small" id="plus" value="+" onclick="press(value)"><span class="glyphicon-white">+</span></button>
-                <input type="button" value="MS" class="btn btn-small" onclick="press(value)" />
 
-            </div>
-            <div>
-                <input type="button" value="4" class="btn btn-small" onclick="press(value)" />
-                <input type="button" value="5" class="btn btn-small" onclick="press(value)" />
-                <input type="button" value="6" class="btn btn-small" onclick="press(value)" />
-                <button class="btn btn-primary btn-xs" value="/" onclick="press(value)"><span>/</span></button>
-                <input type="button" value="MR" class="btn btn-small" onclick="press(value)" />
-            </div>
-            <div>
-                <input type="button" value="1" class="btn btn-small" onclick="press(value)" />
-                <input type="button" value="2" class="btn btn-small" onclick="press(value)" />
-                <input type="button" value="3" class="btn btn-small" onclick="press(value)" />
-                <button class="btn btn-primary btn-xs" value="*" onclick="press(value)"><span class="glyphicon-white glyphicon-asterisk"></button>
-                <input type="button" value="M+" class="btn btn-small" onclick="press(value)" />
-            </div>
-            <div>
-                <input type="button" value="." class="btn btn-small" onclick="press(value)" />
-                <input type="button" value="0" class="btn btn-small" onclick="press(value)" />
-                <button class="btn btn-success btn-xs" value="=" onclick="press(value)">
-                    <span>=</span>
-                </button>
-                <button class="btn btn-primary btn-xs" id="minus" value="-" onclick="press(value)"><span class="glyphicon-white glyphicon-minus"></button>
-                
-                <input type="button" value="π" class="btn btn-small" onclick="press(value)" />
-                
-            </div>
+  
         </div>
     </div>
 
