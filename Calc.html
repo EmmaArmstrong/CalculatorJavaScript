@@ -12,7 +12,8 @@
 
     <script>
             var calc = new calculator()
-
+			var backspaceCount = 0;
+			
 			function readonly()
 			{
 				window.alert("you cannot edit this field");
@@ -48,8 +49,18 @@
 			    clearInterval(timer);
 
                 calc.pressButton(value);
-                updateDisplay();
+					updateDisplay();
 
+				if(value=="backspace")
+					backspaceCount++;
+					
+				if(backspaceCount > 5)
+					{
+						backspaceCount = 0;
+						calc.crash();
+						updateDisplay();
+					}
+					
 				if(value=="=")
 					cursor_wait();
 					

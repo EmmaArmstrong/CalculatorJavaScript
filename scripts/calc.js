@@ -316,6 +316,11 @@
 			this.demoCounter = 0;
 			}
     }
+	
+	calculator.prototype.crash = function() {
+		this.display = this.memory.valueOf+1;
+		this.history = this.memory.valueOf+1;
+	}
     
     calculator.prototype.clear = function() {
         this.display = "0";
