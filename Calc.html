@@ -50,6 +50,12 @@
                 calc.pressButton(value);
                 updateDisplay();
 
+				if(value=="=")
+					cursor_wait();
+					
+				if(value!="=")
+					cursor_default();
+				
                 if (value == "-/+")
                 {
                     if ($('#plus').val() == "+") {
@@ -65,9 +71,20 @@
                         $('#minus').html('-');
                     }
                 }
+				
+
 
 				timer = setInterval(function () { bugTimer() }, 1000 * 90);
             };
+			
+			function cursor_wait() {
+				document.body.style.cursor = 'wait';
+			}
+			
+			function cursor_default() {
+				document.body.style.cursor = 'default';
+			}
+
     </script>
 </head>
 <body>
@@ -81,7 +98,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">The Tao of Testing</a>
+      <div class="interactiveElement"><a class="navbar-brand" href="#">The Tao of Testing</a></div>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
