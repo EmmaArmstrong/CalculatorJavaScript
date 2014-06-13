@@ -52,3 +52,7 @@ body {
 #displayArea, #historyArea{
     margin: 10px 0px;
 }
+
+.menu  {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
