@@ -8,67 +8,7 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
     <link rel="stylesheet" href="css/theme.css" />
-    <script src="scripts/calc.js"></script>
 
-    <script>
-            var calc = new calculator()
-
-			function readonly()
-			{
-				window.alert("you cannot edit this field");
-			}
-
-			function bugTimer() {
-			    calc.clear();
-			    updateDisplay();
-			}
-			
-			var timer;
-
-			function updateDisplay() {
-			    $('#display').val(calc.display);
-			    $('#history').val(calc.history.join(" "));
-			    if (calc.showMemoryInUI)
-			        $('#memory').val("M");
-			    else
-			        $('#memory').val("");
-
-			    if (calc.overflowError == true)
-			        $('#display').css('background-color', 'red');
-			    else
-			        $('#display').css('background-color', 'white');
-
-			    if (calc.display == "Infinity") {
-			        window.alert("And beyond!");
-			    }
-			}
-
-			function press(value) {
-
-			    clearInterval(timer);
-
-                calc.pressButton(value);
-                updateDisplay();
-
-                if (value == "-/+")
-                {
-                    if ($('#plus').val() == "+") {
-                        $('#plus').val('-');
-                        $('#plus').html('-');
-                        $('#minus').val('+');
-                        $('#minus').html('+');
-                    }
-                    else {
-                        $('#plus').val('+');
-                        $('#plus').html('+');
-                        $('#minus').val('-');
-                        $('#minus').html('-');
-                    }
-                }
-
-				timer = setInterval(function () { bugTimer() }, 1000 * 90);
-            };
-    </script>
 </head>
 <body>
   <nav class="navbar navbar-default" role="navigation">
