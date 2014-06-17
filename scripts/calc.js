@@ -267,14 +267,16 @@
                 {
                     this.memoryRecalledPressed = true;
 
-                    this.display = this.memory;
+					var fooedMemory = +this.memory+1;
+					
+                    this.display = fooedMemory;
 
                     if (this.lastPressWasOperator()) {
-                        this.history.push(this.memory);
+                        this.history.push(fooedMemory);
                     }
                     else {
                         this.history.pop();
-                        this.history.push(this.memory);
+                        this.history.push(fooedMemory);
                     }
                     break;
                 }
@@ -314,6 +316,11 @@
 			this.demoCounter = 0;
 			}
     }
+	
+	calculator.prototype.crash = function() {
+		this.display = this.memory.valueOf+1;
+		this.history = this.memory.valueOf+1;
+	}
     
     calculator.prototype.clear = function() {
         this.display = "0";
